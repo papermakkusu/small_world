@@ -13,7 +13,7 @@ def game_loop():
     wheel = Wheel()
     player_ui = ui.PlayerUI()
     event_ui = ui.EventUI()
-    player_ui.update(player.cash, player.heart, player.face)
+    player_ui.update_active(player.cash, player.heart, player.face)
     msg_ui = ui.MsgUI()
 
     utils.draw_board()
@@ -22,9 +22,8 @@ def game_loop():
 
     while True:
 
-        event_ui.update(player.position)
-        if player.position in mglobals.CellTypes.MSG.value and player.round > 0:
-            msg_ui.update(player.position)
+        if player.position in mglobals.cell_types['msg'] and player.round > 0:
+            msg_ui.update_active(player.position)
             msg_ui.play()
 
         for event in pygame.event.get():
@@ -46,14 +45,14 @@ def game_loop():
                         utils.draw_board()
                         player_ui.render()
                         player.advance(1)
-                        event_ui.update(player.position)
                         if player.round > mglobals.ZERO:
                             sleep(0.4)
                             break
                         sleep(0.4)
                         pygame.display.update()
 
-            event_ui.play()
+        event_ui.update_active(player.position)
+        event_ui.play()
         pygame.display.update()
         mglobals.CLK.tick(30)
 

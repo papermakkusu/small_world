@@ -57,14 +57,14 @@ def draw_char_select_screen():
         mglobals.CLK.tick(30)
 
 
-class PlayerUI(pygame.sprite.Sprite):
+class PlayerUI(object):
     def __init__(self, cash=mglobals.FIRST_UI_VALUE, heart=mglobals.FIRST_UI_VALUE, face=mglobals.SECOND_UI_VALUE):
         super(PlayerUI, self).__init__()
         self.cash = cash
         self.heart = heart
         self.face = face
 
-    def update(self, cash=None, heart=None, face=None):
+    def update_active(self, cash=None, heart=None, face=None):
         self.cash = cash if cash is not None else self.cash
         self.heart = heart if heart is not None else self.heart
         self.face = face if face is not None else self.face
@@ -79,41 +79,52 @@ class PlayerUI(pygame.sprite.Sprite):
             mglobals.GD.blit(face[self.face], face[self.face].get_rect())
 
 
-class EventUI(pygame.sprite.Sprite):
+class EventUI(object):
     def __init__(self):
         super(EventUI, self).__init__()
         self.active_event = None
+        self.position = None
 
-    class PiggyBank(object):
-        def __init__(self):
+    class Event(object):
+        def __init__(self, img, intro_scene, dialogue_0, dialogue_1, choice_screen, choice_1_yes, choice_1_no,
+                     choice_2_yes, choice_2_no, choice_3_yes, choice_3_no, choice_4_yes, choice_4_no, results):
             self.img = mglobals.PIGGY_BANK
+            self.intro_scene = None
+            self.dialogue_0 = None
+            self.dialogue_1 = None
+            self.choice_screen = None
             self.choice_1_yes = None
             self.choice_1_no = None
             self.choice_2_yes = None
             self.choice_2_no = None
+            self.choice_3_yes = None
+            self.choice_3_no = None
+            self.choice_4_yes = None
+            self.choice_4_no = None
+            self.results = None
+
+        def play_event(self)
+            pass
 
     class Finance(object):
         def __init__(self):
-            self.img = mglobals.FINANCE
+            self.img =
             self.choice_1_yes = None
             self.choice_1_no = None
             self.choice_2_yes = None
             self.choice_2_no = None
 
-    def update(self, event_type: int):
-        if event_type in mglobals.CellTypes.PIGGY_BANK.value:
-            self.active_event = self.PiggyBank()
-        elif event_type in mglobals.CellTypes.FINANCE.value:
-            self.active_event = self.Finance()
+    def update_active(self, player_position):
+
+        if player_position in mglobals.cell_types['piggy_bank']:
+            self.active_event = self.Event(mglobals.PIGGY_BANK, )
+        elif player_position in mglobals.cell_types['finance']:
+            self.active_event = self.Event(mglobals.FINANCE, )
 
     def play(self):
+
         if self.active_event is not None:
-            ev = (self.active_event.img, 'event')
-            mglobals.GD.blit(self.active_event.img, self.active_event.img.get_rect())
-            #utils.image_display(start)
-            #utils.image_display(quit)
             while True:
-                mglobals.GD.blit(self.active_event.img, self.active_event.img.get_rect())
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
@@ -129,6 +140,8 @@ class EventUI(pygame.sprite.Sprite):
                         elif event.key == pygame.K_RETURN:
                             self.active_event = None
                             return
+
+                mglobals.GD.blit(self.active_event.img, self.active_event.img.get_rect())
                 pygame.display.update()
                 mglobals.CLK.tick(30)
 
@@ -136,7 +149,7 @@ class EventUI(pygame.sprite.Sprite):
 class MsgUI(pygame.sprite.Sprite):
     def __init__(self):
         super(MsgUI, self).__init__()
-        self.active_msg = self.ThankYou()
+        self.active_msg = None
 
     class ThankYou(object):
         def __init__(self):
@@ -145,12 +158,11 @@ class MsgUI(pygame.sprite.Sprite):
         def action(self):
             main()
 
-    def update(self, msg_type):
-        if msg_type == mglobals.THANK_YOU:
+    def update_active(self, msg_type):
+        if msg_type in mglobals.cell_types['msg']:
             self.active_msg = self.ThankYou()
 
     def play(self):
-        mglobals.GD.blit(self.active_msg.img, self.active_msg.img.get_rect())
 
         while True:
             for event in pygame.event.get():
@@ -167,9 +179,9 @@ class MsgUI(pygame.sprite.Sprite):
                     #    one, two, three = two, three, one
                     elif event.key == pygame.K_RETURN:
                         self.active_msg.action()
-                        self.active_msg = None
-                    mglobals.GD.blit(self.active_msg.img, self.active_msg.img.get_rect())
+                        #self.active_msg = None
 
+            mglobals.GD.blit(self.active_msg.img, self.active_msg.img.get_rect())
             pygame.display.update()
             mglobals.CLK.tick(30)
 

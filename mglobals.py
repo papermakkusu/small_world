@@ -61,11 +61,11 @@ FINANCE = None
 THANK_YOU = None
 
 
-class CellTypes(Enum):
-    PIGGY_BANK = (3, 10, 13, 19, 23),
-    FINANCE = (4, 17, 20, 26),
-    MSG = (0, )
-
+cell_types = {
+    'piggy_bank': (3, 10, 13, 19, 23),
+    'finance': (4, 17, 20, 26),
+    'msg': (0, )
+}
 
 font_size_map = {
     'big': 50,
