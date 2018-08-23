@@ -9,19 +9,20 @@ import ui
 import constants
 import utils
 from player import Player
-from wheel import Wheel
+from dice import Wheel
 from time import sleep
 import constants
 
 
 def game_loop():
 
+    dice_rolls = (3, 7, 8)
+
     player = Player(constants.PLAYER)
     wheel = Wheel()
     player_ui = ui.PlayerUI()
     event_ui = ui.EventUI()
-    player_ui.update_active(player.cash, player.heart, player.face)
-    msg_ui = ui.MsgUI()
+    player_ui.update_active(player.cash, player.heart, player.face, player.goal)
 
     utils.draw_board()
     player.render()
@@ -29,9 +30,9 @@ def game_loop():
 
     while True:
 
-        if player.position in constants.cell_types['msg'] and player.round > 0:
-            msg_ui.update_active(player.position)
-            msg_ui.play()
+        #if player.position in constants.cell_types['msg'] and player.round > 0:
+        #    msg_ui.update_active(player.position)
+        # #   msg_ui.play()
 
         for event in pygame.event.get():
 
@@ -44,7 +45,7 @@ def game_loop():
                     quit()
 
                 if event.key == pygame.K_RETURN:
-                    wheel.spin()
+                    wheel.throw()
                     wheel.show()
 
                     # Move the player token across the board
@@ -58,8 +59,8 @@ def game_loop():
                         sleep(0.4)
                         pygame.display.update()
 
-        event_ui.update_active(player.position)
-        event_ui.play()
+        #event_ui.update_active(player.position)
+        #event_ui.play()
         pygame.display.update()
         constants.CLK.tick(30)
 

@@ -13,10 +13,11 @@ ZERO = 0
 BOARD_SQUARES = 27
 WHITE = (255, 255, 255)
 
-ZERO_UI_VALUE = 0
-FIRST_UI_VALUE = 1
-SECOND_UI_VALUE = 2
-THIRD_UI_VALUE = 3
+ZERO = 0
+ONE = 1
+TWO = 2
+THREE = 3
+FOUR = 4
 
 SPRITE_DRAW_TICK = 30
 
@@ -70,9 +71,16 @@ FINANCE = None
 THANK_YOU = None
 
 cell_types = {
-    'market': (8, 15, 24),
-    'career': (1, 10, 13, 23),
-    'family': (4, 18),
+    'market': (3, 8, 15, 24, ),
+    'career': (1, 10, 13, 23, ),
+    'family': (0, 4, 18, ),
+    'leisure': (2, 19, 26, ),
+    'quiz': (5, 12, 16, ),
+    'home': (6, 25, ),
+    'medical': (7, 14, 21, ),
+    'transportation': (9, 22, ),
+    'time_travel': (11, 17, ),
+    'education': (20, 27, ),
 }
 
 token_positioning = {
@@ -131,6 +139,7 @@ def load_imgs():
         METER_HEALTH_050, \
         METER_HEALTH_075, \
         METER_HEALTH_100, \
+        METER_GOAL_100, \
         PIGGY_BANK, \
         FINANCE, \
         THANK_YOU, \
@@ -150,9 +159,9 @@ def load_imgs():
     WHEEL_ANIMATION_3 = pygame.image.load('assets/wheel_spin_3.png')
     WHEEL_10 = pygame.image.load('assets/wheel_10.png')
 
-    PIGGY_BANK = pygame.image.load('assets/piggy_bank.png')
-    FINANCE = pygame.image.load('assets/finance.png')
-    THANK_YOU = pygame.image.load('assets/thank_you.png')
+#   #PIGGY_BANK = pygame.image.load('assets/piggy_bank.png')
+    #FINANCE = pygame.image.load('assets/finance.png')
+    #THANK_YOU = pygame.image.load('assets/thank_you.png')
 
     METER_HAPPINESS_000 = pygame.image.load('assets/METER_HAPPINESS_000.png')
     METER_HAPPINESS_025 = pygame.image.load('assets/METER_HAPPINESS_025.png')
@@ -172,10 +181,12 @@ def load_imgs():
     METER_HEALTH_075 = pygame.image.load('assets/METER_HEALTH_075.png')
     METER_HEALTH_100 = pygame.image.load('assets/METER_HEALTH_100.png')
 
-    DIALOGUE_SEQUENCE_101 = pygame.image.load('assets/DIALOGUE_SEQIENCE_101.png')
-    DIALOGUE_SEQUENCE_102 = pygame.image.load('assets/DIALOGUE_SEQIENCE_102.png')
-    DIALOGUE_SEQUENCE_103 = pygame.image.load('assets/DIALOGUE_SEQIENCE_103.png')
-    DIALOGUE_SEQUENCE_104 = pygame.image.load('assets/DIALOGUE_SEQIENCE_104.png')
+    METER_GOAL_100 = pygame.image.load('assets/METER_GOAL_100.png')
+
+    #DIALOGUE_SEQUENCE_101 = pygame.image.load('assets/DIALOGUE_SEQIENCE_101.png')
+    #DIALOGUE_SEQUENCE_102 = pygame.image.load('assets/DIALOGUE_SEQIENCE_102.png')
+    #DIALOGUE_SEQUENCE_103 = pygame.image.load('assets/DIALOGUE_SEQIENCE_103.png')
+    #DIALOGUE_SEQUENCE_104 = pygame.image.load('assets/DIALOGUE_SEQIENCE_104.png')
 
 
 def init_pygame():

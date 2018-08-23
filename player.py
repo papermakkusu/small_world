@@ -5,7 +5,7 @@ __author__ = 'Maksim Vasilev'
 
 
 import constants
-from events import Event
+import events
 
 
 class Player(object):
@@ -19,23 +19,24 @@ class Player(object):
             self.player_img = constants.P_SALES
         self.position = constants.ZERO
         self.coord = (constants.ZERO, constants.ZERO)
-        self.cash = constants.SECOND_UI_VALUE
-        self.heart = constants.SECOND_UI_VALUE
-        self.face = constants.FIRST_UI_VALUE
+        self.cash = constants.TWO
+        self.heart = constants.TWO
+        self.face = constants.TWO
+        self.goal = constants.FOUR
         self.round = constants.ZERO
         self.event = None
 
     def reposition(self):
         self.coord = constants.token_positioning[self.position]
 
-    def set_event(self, player_position):
-
-        if player_position in constants.cell_types['piggy_bank']:
-            self.event = Event(constants.PIGGY_BANK, )
-        elif player_position in constants.cell_types['finance']:
-            self.event = Event(constants.FINANCE, )
-        elif player_position in constants.cell_types['finance']:
-            self.event = Event(constants.FINANCE, )
+#    def set_event(self, player_position):
+#
+#        if player_position in constants.cell_types['piggy_bank']:
+#            self.event = Event(constants.PIGGY_BANK, )
+#        elif player_position in constants.cell_types['finance']:
+#            self.event = Event(constants.FINANCE, )
+#        elif player_position in constants.cell_types['finance']:
+#            self.event = Event(constants.FINANCE, )
 
     def advance(self, count):
         if self.position + count > constants.BOARD_SQUARES:

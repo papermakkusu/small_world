@@ -26,13 +26,19 @@ meter_finance = (constants.METER_FINANCE_000,
                  constants.METER_FINANCE_100,
                  )
 
-dialogue_sequence_1 = (DIALOGUE_SEQUENCE_101,
-                       DIALOGUE_SEQUENCE_102,
-                       DIALOGUE_SEQUENCE_103,
-                       DIALOGUE_SEQUENCE_104,
+meter_goal = (constants.METER_GOAL_100,
+              constants.METER_GOAL_100,
+              constants.METER_GOAL_100,
+              constants.METER_GOAL_100,
+              constants.METER_GOAL_100,
+              )
+
+dialogue_sequence_1 = (constants.DIALOGUE_SEQUENCE_101,
+                       constants.DIALOGUE_SEQUENCE_102,
+                       constants.DIALOGUE_SEQUENCE_103,
+                       constants.DIALOGUE_SEQUENCE_104,
                        )
 
-answers_sequence_1 = 
 
 
 
