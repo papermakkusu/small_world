@@ -33,10 +33,10 @@ meter_goal = (constants.METER_GOAL_100,
               constants.METER_GOAL_100,
               )
 
-dialogue_sequence_1 = (constants.DIALOGUE_SEQUENCE_101,
-                       constants.DIALOGUE_SEQUENCE_102,
-                       constants.DIALOGUE_SEQUENCE_103,
-                       constants.DIALOGUE_SEQUENCE_104,
+dialogue_sequence_1 = (constants.MARKET_EVENT_SEQUENCE_0,
+                       constants.MARKET_EVENT_SEQUENCE_1,
+                       constants.MARKET_EVENT_SEQUENCE_2,
+                       constants.MARKET_EVENT_SEQUENCE_4,
                        )
 
 

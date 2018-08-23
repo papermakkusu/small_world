@@ -19,8 +19,6 @@ TWO = 2
 THREE = 3
 FOUR = 4
 
-SPRITE_DRAW_TICK = 30
-
 WHEEL_ANIMATION_1 = None
 WHEEL_ANIMATION_2 = None
 WHEEL_ANIMATION_3 = None
@@ -28,6 +26,7 @@ WHEEL_10 = None
 
 GD = None
 CLK = None
+FPS = 4
 
 PLAYER = None
 
@@ -61,10 +60,22 @@ METER_HEALTH_050 = None
 METER_HEALTH_075 = None
 METER_HEALTH_100 = None
 
-DIALOGUE_SEQUENCE_101 = None
-DIALOGUE_SEQUENCE_102 = None
-DIALOGUE_SEQUENCE_103 = None
-DIALOGUE_SEQUENCE_104 = None
+MARKET_EVENT_SEQUENCE_0 = None
+MARKET_EVENT_SEQUENCE_1 = None
+MARKET_EVENT_SEQUENCE_2 = None
+
+CAREER_EVENT_SEQUENCE_0 = None
+CAREER_EVENT_SEQUENCE_1 = None
+CAREER_EVENT_SEQUENCE_2 = None
+CAREER_EVENT_SEQUENCE_3_BUTTON_1 = None
+CAREER_EVENT_SEQUENCE_3_BUTTON_2 = None
+CAREER_EVENT_SEQUENCE_3_BUTTON_3 = None
+CAREER_EVENT_SEQUENCE_3_BUTTON_4 = None
+CAREER_EVENT_SEQUENCE_4 = None
+
+FAMILY_EVENT_SEQUENCE_0 = None
+FAMILY_EVENT_SEQUENCE_1 = None
+FAMILY_EVENT_SEQUENCE_2 = None
 
 PIGGY_BANK = None
 FINANCE = None
@@ -143,10 +154,21 @@ def load_imgs():
         PIGGY_BANK, \
         FINANCE, \
         THANK_YOU, \
-        DIALOGUE_SEQUENCE_101, \
-        DIALOGUE_SEQUENCE_102, \
-        DIALOGUE_SEQUENCE_103, \
-        DIALOGUE_SEQUENCE_104
+        MARKET_EVENT_SEQUENCE_0, \
+        MARKET_EVENT_SEQUENCE_1, \
+        MARKET_EVENT_SEQUENCE_2, \
+        CAREER_EVENT_SEQUENCE_0, \
+        CAREER_EVENT_SEQUENCE_1, \
+        CAREER_EVENT_SEQUENCE_2, \
+        CAREER_EVENT_SEQUENCE_3_BUTTON_1, \
+        CAREER_EVENT_SEQUENCE_3_BUTTON_2, \
+        CAREER_EVENT_SEQUENCE_3_BUTTON_3, \
+        CAREER_EVENT_SEQUENCE_3_BUTTON_4, \
+        CAREER_EVENT_SEQUENCE_4, \
+        FAMILY_EVENT_SEQUENCE_0, \
+        FAMILY_EVENT_SEQUENCE_1, \
+        FAMILY_EVENT_SEQUENCE_2
+
 
     BOARD = pygame.image.load('assets/BOARD.png')
 
@@ -183,10 +205,22 @@ def load_imgs():
 
     METER_GOAL_100 = pygame.image.load('assets/METER_GOAL_100.png')
 
-    #DIALOGUE_SEQUENCE_101 = pygame.image.load('assets/DIALOGUE_SEQIENCE_101.png')
-    #DIALOGUE_SEQUENCE_102 = pygame.image.load('assets/DIALOGUE_SEQIENCE_102.png')
-    #DIALOGUE_SEQUENCE_103 = pygame.image.load('assets/DIALOGUE_SEQIENCE_103.png')
-    #DIALOGUE_SEQUENCE_104 = pygame.image.load('assets/DIALOGUE_SEQIENCE_104.png')
+    MARKET_EVENT_SEQUENCE_0 = pygame.image.load('assets/scene-market-720x720.png')
+    MARKET_EVENT_SEQUENCE_1 = pygame.image.load('assets/scene-market-speech1-720x720.png')
+    MARKET_EVENT_SEQUENCE_2 = pygame.image.load('assets/scene-market-speech1-720x720.png')
+
+    CAREER_EVENT_SEQUENCE_0 = pygame.image.load('assets/scene-career-720x720.png')
+    CAREER_EVENT_SEQUENCE_1 = pygame.image.load('assets/scene-career-speech1-720x720.png')
+    CAREER_EVENT_SEQUENCE_2 = pygame.image.load('assets/scene-career-speech2-720x720.png')
+    CAREER_EVENT_SEQUENCE_3_BUTTON_1 = pygame.image.load('assets/scene-career-speech4a-720x720.png')
+    CAREER_EVENT_SEQUENCE_3_BUTTON_2 = pygame.image.load('assets/scene-career-speech4b-720x720.png')
+    CAREER_EVENT_SEQUENCE_3_BUTTON_3 = pygame.image.load('assets/scene-career-speech4c-720x720.png')
+    CAREER_EVENT_SEQUENCE_3_BUTTON_4 = pygame.image.load('assets/scene-career-speech4d-720x720.png')
+    CAREER_EVENT_SEQUENCE_4 = pygame.image.load('assets/scene-career-720x720.png')
+
+    FAMILY_EVENT_SEQUENCE_0 = pygame.image.load('assets/scene-family-720x720.png')
+    FAMILY_EVENT_SEQUENCE_1 = pygame.image.load('assets/scene-family-speech1-720x720.png')
+    FAMILY_EVENT_SEQUENCE_2 = pygame.image.load('assets/scene-family-speech1-720x720.png')
 
 
 def init_pygame():

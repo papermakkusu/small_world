@@ -39,7 +39,7 @@ def play_animation(interval: float, repeat: int, resources: list):
 def draw_sprite(sprite):
     constants.GD.blit(sprite, sprite.get_rect())
     pygame.display.update()
-    constants.CLK.tick(30)
+    constants.CLK.tick(constants.FPS)
 
 
 

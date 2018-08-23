@@ -9,7 +9,7 @@ import ui
 import constants
 import utils
 from player import Player
-from dice import Wheel
+from dice import Dice
 from time import sleep
 import constants
 
@@ -18,11 +18,12 @@ def game_loop():
 
     dice_rolls = (3, 7, 8)
 
-    player = Player(constants.PLAYER)
-    wheel = Wheel()
+    event_counter = 0
+    player = Player()
+    dice = Dice()
     player_ui = ui.PlayerUI()
     event_ui = ui.EventUI()
-    player_ui.update_active(player.cash, player.heart, player.face, player.goal)
+    player_ui.update(player.state)
 
     utils.draw_board()
     player.render()
@@ -45,11 +46,12 @@ def game_loop():
                     quit()
 
                 if event.key == pygame.K_RETURN:
-                    wheel.throw()
-                    wheel.show()
+                    dice.throw(dice_rolls[event_counter])
+                    dice.show()
+                    event_counter += 1
 
                     # Move the player token across the board
-                    for _ in range(wheel.number):
+                    for _ in range(dice.number):
                         utils.draw_board()
                         player_ui.render()
                         player.advance(1)
@@ -59,10 +61,16 @@ def game_loop():
                         sleep(0.4)
                         pygame.display.update()
 
+                    event_ui.spawn_event(player.position)
+                    event_ui.play(player_ui, player.state)
+                    utils.draw_board()
+                    player.render()
+                    player_ui.render()
+
         #event_ui.update_active(player.position)
         #event_ui.play()
         pygame.display.update()
-        constants.CLK.tick(30)
+        constants.CLK.tick(constants.FPS)
 
 
 def main():

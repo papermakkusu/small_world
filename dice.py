@@ -9,7 +9,7 @@ import constants
 import utils
 
 
-class Wheel(object):
+class Dice(object):
     def __init__(self):
         self.number = constants.ZERO
         self.image = constants.WHEEL_10
@@ -19,10 +19,9 @@ class Wheel(object):
                                    constants.WHEEL_ANIMATION_3)
 
     def throw(self, count=None):
-        if count is not None:
-            self.number = count
-        else:
-            self.number = random.randrange(10, 11)      # broken random, always shows 10
+
+        self.number = count if count is not None else random.randrange(10, 11)  # broken random, always shows 10
+
         # TODO change dice roll result image here
         # self.image =
         self.play_animation()
