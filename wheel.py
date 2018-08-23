@@ -1,15 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Maksim Vasilev'
+
+
 import random
-import mglobals
+import constants
 import utils
-from time import sleep
-import pygame
 
 
 class Wheel(object):
     def __init__(self):
-        self.number = mglobals.ZERO
+        self.number = constants.ZERO
         self.image = None
-        self.coord = (mglobals.ZERO, mglobals.ZERO)
+        self.coord = (constants.ZERO, constants.ZERO)
 
     def spin(self):
         self.number = random.randrange(10, 11)      # broken random, always shows 10
@@ -17,18 +21,11 @@ class Wheel(object):
         self.show()
 
     def play_animation(self):
-        mglobals.GD.blit(mglobals.WHEEL_ANIMATION_1, self.coord)
-        pygame.display.update()
-        sleep(0.3)
-        mglobals.GD.blit(mglobals.WHEEL_ANIMATION_2, self.coord)
-        pygame.display.update()
-        sleep(0.3)
-        mglobals.GD.blit(mglobals.WHEEL_ANIMATION_3, self.coord)
-        pygame.display.update()
-        sleep(0.3)
+        utils.play_animation(0.3, 1, (constants.WHEEL_ANIMATION_1, constants.WHEEL_ANIMATION_2,
+                                      constants.WHEEL_ANIMATION_3))
 
     def show(self):
-        mglobals.GD.blit(mglobals.WHEEL_10, self.coord)
-        pygame.display.update()
-        sleep(1)
+        utils.draw_sprite(self.image)
+
+
 

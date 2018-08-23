@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Maksim Vasilev'
+
+
 from cx_Freeze import setup, Executable
 
 base = None

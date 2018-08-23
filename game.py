@@ -1,15 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Maksim Vasilev'
+
+
 import pygame
 import ui
-import mglobals
+import constants
 import utils
 from player import Player
 from wheel import Wheel
 from time import sleep
+import constants
 
 
 def game_loop():
 
-    player = Player(mglobals.PLAYER)
+    player = Player(constants.PLAYER)
     wheel = Wheel()
     player_ui = ui.PlayerUI()
     event_ui = ui.EventUI()
@@ -22,7 +29,7 @@ def game_loop():
 
     while True:
 
-        if player.position in mglobals.cell_types['msg'] and player.round > 0:
+        if player.position in constants.cell_types['msg'] and player.round > 0:
             msg_ui.update_active(player.position)
             msg_ui.play()
 
@@ -45,7 +52,7 @@ def game_loop():
                         utils.draw_board()
                         player_ui.render()
                         player.advance(1)
-                        if player.round > mglobals.ZERO:
+                        if player.round > constants.ZERO:
                             sleep(0.4)
                             break
                         sleep(0.4)
@@ -54,14 +61,13 @@ def game_loop():
         event_ui.update_active(player.position)
         event_ui.play()
         pygame.display.update()
-        mglobals.CLK.tick(30)
+        constants.CLK.tick(30)
 
 
 def main():
-    mglobals.init()
-    ui.draw_start_screen()
-    ui.draw_char_select_screen()
-    #ui.init_centre_displays()
+    constants.init()
+    #ui.draw_start_screen()
+    #ui.draw_char_select_screen()
     game_loop()
     pygame.quit()
     quit()
