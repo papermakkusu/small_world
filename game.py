@@ -53,11 +53,12 @@ def game_loop():
                         utils.draw_board()
                         player_ui.render()
                         player.advance(1)
-                        if player.round > constants.ZERO:
-                            sleep(0.4)
-                            break
+                        # if player.round > constants.ZERO:
+                        #     sleep(0.4)
+                        #     break
                         sleep(0.4)
                         pygame.display.update()
+                        pygame.event.poll()
 
                     event_ui.spawn_event(player.position)
                     player.state = event_ui.play(player_ui, player.state)
@@ -67,15 +68,14 @@ def game_loop():
 
         pygame.display.update()
         constants.CLK.tick(constants.FPS)
-
-        if event_counter > 2:
+        if event_counter == 3:
             while True:
-                for quit_event in pygame.event.get():
-                    if event.type ==     pygame.QUIT:
+                for in_event in pygame.event.get():
+                    if in_event.type == pygame.QUIT:
                         pygame.quit()
                         quit()
-                    elif event.type == pygame.KEYDOWN:
-                        if quit_event.type == pygame.K_ESCAPE:
+                    elif in_event.type == pygame.KEYDOWN:
+                        if in_event.key == pygame.K_ESCAPE:
                             pygame.quit()
                             quit()
 

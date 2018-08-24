@@ -40,9 +40,7 @@ DICE_ROLL_FINAL_8 = None
 
 GD = None
 CLK = None
-FPS = 120
-
-PLAYER = None
+FPS = 30
 
 DOC_YES = None
 DEV_YES = None
@@ -209,7 +207,17 @@ def load_imgs():
         CHEAT_METER_0_4, \
         CHEAT_METER_0_5, \
         CHEAT_METER_1, \
+        CHEAT_METER_1_1, \
+        CHEAT_METER_1_2, \
+        CHEAT_METER_1_3, \
+        CHEAT_METER_1_4, \
+        CHEAT_METER_1_5, \
         CHEAT_METER_2, \
+        CHEAT_METER_2_1, \
+        CHEAT_METER_2_2, \
+        CHEAT_METER_2_3, \
+        CHEAT_METER_2_4, \
+        CHEAT_METER_2_5, \
         CHEAT_METER_3, \
         DICE_ROLL_0, \
         DICE_ROLL_1, \
@@ -298,8 +306,23 @@ def load_imgs():
     FAMILY_EVENT_SEQUENCE_2 = pygame.image.load('assets/scene-family-speech1-720x720.png')
 
     CHEAT_METER_0 = pygame.image.load('assets/meter_1.png')
+    CHEAT_METER_0_1 = pygame.image.load('assets/meter_1-1.png')
+    CHEAT_METER_0_2 = pygame.image.load('assets/meter_1-2.png')
+    CHEAT_METER_0_3 = pygame.image.load('assets/meter_1-3.png')
+    CHEAT_METER_0_4 = pygame.image.load('assets/meter_1-4.png')
+    CHEAT_METER_0_5 = pygame.image.load('assets/meter_1-5.png')
     CHEAT_METER_1 = pygame.image.load('assets/meter_2.png')
+    CHEAT_METER_1_1 = pygame.image.load('assets/meter_2-1.png')
+    CHEAT_METER_1_2 = pygame.image.load('assets/meter_2-2.png')
+    CHEAT_METER_1_3 = pygame.image.load('assets/meter_2-3.png')
+    CHEAT_METER_1_4 = pygame.image.load('assets/meter_2-4.png')
+    CHEAT_METER_1_5 = pygame.image.load('assets/meter_2-5.png')
     CHEAT_METER_2 = pygame.image.load('assets/meter_3.png')
+    CHEAT_METER_2_1 = pygame.image.load('assets/meter_3-1.png')
+    CHEAT_METER_2_2 = pygame.image.load('assets/meter_3-2.png')
+    CHEAT_METER_2_3 = pygame.image.load('assets/meter_3-3.png')
+    CHEAT_METER_2_4 = pygame.image.load('assets/meter_3-4.png')
+    CHEAT_METER_2_5 = pygame.image.load('assets/meter_3-5.png')
     CHEAT_METER_3 = pygame.image.load('assets/meter_4.png')
 
     SOUND_BOARD_MOVE = pygame.mixer.Sound('sounds/small_world_board_move.wav')
@@ -312,14 +335,13 @@ def load_imgs():
 
 
 def init_pygame():
-    global GD, CLK, PLAYER, DISPLAY_W, DISPLAY_H
+    global GD, CLK, DISPLAY_W, DISPLAY_H
     pygame.init()
     pygame.mixer.pre_init(44100, 16, 2, 4096)
     GD = pygame.display.set_mode((DISPLAY_W, DISPLAY_H))
-    pygame.display.set_caption("It's a small world!")
+    pygame.display.set_caption("Invested")
     CLK = pygame.time.Clock()
     pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
-    PLAYER = {}
 
 
 def init():

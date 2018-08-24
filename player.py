@@ -5,6 +5,7 @@ __author__ = 'Maksim Vasilev'
 
 
 import constants
+import pygame
 
 
 class Player(object):

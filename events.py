@@ -7,6 +7,7 @@ import pygame
 import utils
 from time import sleep
 import constants
+from meter import Meter
 
 
 class MarketEvent(object):
@@ -41,16 +42,17 @@ class MarketEvent(object):
                             player_state['heart'] += 1
                             player_state['face'] += 1
                             # utils.draw_sprite(self.scenes[screen])
+                            constants.SOUND_HAPPY_EVENT_APPEAR.play()
+                            Meter().play_animation(0)
                             player_ui.update(1)  # (player_state)
                             player_ui.render()
-                            constants.SOUND_HAPPY_EVENT_APPEAR.play()
                         if screen == 2:
                             return player_state
                         screen += 1
                         utils.draw_sprite(self.scenes[screen])
                         player_ui.render()
-                pygame.display.update()
-                constants.CLK.tick(constants.FPS)
+            pygame.display.update()
+            constants.CLK.tick(constants.FPS)
 
 
 class CareerEvent(object):
@@ -144,9 +146,10 @@ class CareerEvent(object):
                             player_ui.render()
                         if screen == 5:
                             utils.draw_sprite(self.scenes[screen])
+                            constants.SOUND_SAD_EVENT_APPEAR.play()
+                            Meter().play_animation(1)
                             player_ui.update(2)
                             player_ui.render()
-                            constants.SOUND_SAD_EVENT_APPEAR.play()
                         if screen == 6:
                             return player_state
 
@@ -154,8 +157,8 @@ class CareerEvent(object):
                     utils.draw_sprite(one)
                     player_ui.render()
 
-                pygame.display.update()
-                constants.CLK.tick(constants.FPS)
+            pygame.display.update()
+            constants.CLK.tick(constants.FPS)
 
 
 class FamilyEvent(object):
@@ -190,9 +193,10 @@ class FamilyEvent(object):
                             player_state['heart'] += 1
                             player_state['face'] -= 2
                             # utils.draw_sprite(self.scenes[screen])
+                            constants.SOUND_HAPPY_EVENT_APPEAR.play()
+                            Meter().play_animation(2)
                             player_ui.update(3)  # (player_state)
                             player_ui.render()
-                            constants.SOUND_HAPPY_EVENT_APPEAR.play()
                         if screen == 2:
                             return player_state
                         screen += 1
@@ -200,6 +204,6 @@ class FamilyEvent(object):
                         # player_ui.update(player_state)
                         player_ui.render()
 
-                    pygame.display.update()
-                    constants.CLK.tick(constants.FPS)
+            pygame.display.update()
+            constants.CLK.tick(constants.FPS)
 

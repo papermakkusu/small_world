@@ -94,6 +94,8 @@ class PlayerUI(object):
                       constants.CHEAT_METER_2,
                       constants.CHEAT_METER_3,
                       )
+
+
         self.cheat_meter = 0
         self.active_state = {}
 
