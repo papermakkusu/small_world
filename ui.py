@@ -26,15 +26,14 @@ def draw_start_screen():
                 if event.key in [pygame.K_UP, pygame.K_DOWN]:
                     one, two = two, one
                     utils.draw_start_menu(one[0], one[1])
-
+                    pygame.display.update()
+                    constants.CLK.tick(constants.FPS)
                 elif event.key == pygame.K_RETURN:
                     if one[2] == 'quit':
                         pygame.quit()
                         quit()
                     elif one[2] == 'start':
                         return
-        pygame.display.update()
-        constants.CLK.tick(constants.FPS)
 
 
 def draw_char_select_screen():
@@ -59,8 +58,8 @@ def draw_char_select_screen():
                     constants.PLAYER = one[1]
                     return
                 utils.draw_player_menu(one)
-        pygame.display.update()
-        constants.CLK.tick(constants.FPS)
+                pygame.display.update()
+                constants.CLK.tick(constants.FPS)
 
 
 class PlayerUI(object):

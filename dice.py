@@ -39,17 +39,16 @@ class Dice(object):
         self.number = count if count is not None else random.randrange(10, 11)  # broken random, always shows 10
 
         # TODO change dice roll result image here
-        # self.image =
         constants.SOUND_DICE_ROLL.play()
         self.play_animation()
         constants.SOUND_SHOW_ROLL_RESULT.play()
         self.show(count)
-        sleep(3)
+        sleep(2)
 
     def play_animation(self):
         utils.play_animation(0.07, self.animation_sequence)
 
-    def show(self,roll: int):
+    def show(self, roll: int):
         utils.draw_sprite(self.roll_result[roll])
 
 

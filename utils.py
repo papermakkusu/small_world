@@ -14,17 +14,16 @@ def draw_board():
     constants.GD.blit(constants.BOARD, (0, 0))
 
 
-#def draw_start_menu(start, quit):
-#    constants.GD.fill(constants.WHITE)
-#    constants.GD.blit(constants.START_IMG, constants.START_IMG.get_rect())
-#    draw_sprite(start)#
-#    draw_sprite(quit)
-#
-#
+# def draw_start_menu(start, quit):
+#     constants.GD.fill(constants.WHITE)
+#     constants.GD.blit(constants.START_IMG, constants.START_IMG.get_rect())
+#     draw_sprite(start)#
+#     draw_sprite(quit)
+
+
 def draw_player_menu(*args):
     constants.GD.fill(constants.WHITE)
     constants.GD.blit(constants.BG_IMG, constants.BG_IMG.get_rect())
-
     draw_sprite(args[0])
 
 

@@ -5,7 +5,6 @@ __author__ = 'Maksim Vasilev'
 
 
 import constants
-import events
 
 
 class Player(object):
@@ -32,8 +31,8 @@ class Player(object):
         else:
             self.position += count
         self.reposition()
-        constants.SOUND_BOARD_MOVE.play()
         self.render()
+        constants.SOUND_BOARD_MOVE.play()
 
     def change_state(self, cash=None, heart=None, face=None, goal=None):
         self.resources['cash'] = cash if cash is not None else self.resources['cash']

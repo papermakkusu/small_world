@@ -22,5 +22,5 @@ setup(
     options = options,
     version = "1.0",
     description = '<any description>',
-    executables = executables
+    executables = executables, requires=['pygame']
 )

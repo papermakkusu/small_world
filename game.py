@@ -6,7 +6,6 @@ __author__ = 'Maksim Vasilev'
 
 import pygame
 import ui
-import constants
 import utils
 from player import Player
 from dice import Dice
@@ -31,16 +30,16 @@ def game_loop():
 
     while True:
 
-        #if player.position in constants.cell_types['msg'] and player.round > 0:
+        # if player.position in constants.cell_types['msg'] and player.round > 0:
         #    msg_ui.update_active(player.position)
-        # #   msg_ui.play()
+        #    msg_ui.play()
 
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
-                return
+                pygame.quit()
+                quit()
             elif event.type == pygame.KEYDOWN:
-
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     quit()
@@ -66,24 +65,25 @@ def game_loop():
                     player.render()
                     player_ui.render()
 
-        # event_ui.update_active(player.position)
-        # event_ui.play()
         pygame.display.update()
         constants.CLK.tick(constants.FPS)
 
-        # loop that waits for player to press Escape to exit the game
-        if event_counter == 3:
+        if event_counter > 2:
             while True:
                 for quit_event in pygame.event.get():
-                    if quit_event.key == pygame.K_ESCAPE:
+                    if event.type ==     pygame.QUIT:
                         pygame.quit()
                         quit()
+                    elif event.type == pygame.KEYDOWN:
+                        if quit_event.type == pygame.K_ESCAPE:
+                            pygame.quit()
+                            quit()
 
 
 def main():
     constants.init()
-    #ui.draw_start_screen()
-    #ui.draw_char_select_screen()
+    # ui.draw_start_screen()
+    # ui.draw_char_select_screen()
     game_loop()
     pygame.quit()
     quit()
