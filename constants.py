@@ -19,14 +19,28 @@ TWO = 2
 THREE = 3
 FOUR = 4
 
-WHEEL_ANIMATION_1 = None
-WHEEL_ANIMATION_2 = None
-WHEEL_ANIMATION_3 = None
-WHEEL_10 = None
+DICE_ROLL_0 = None
+DICE_ROLL_1 = None
+DICE_ROLL_2 = None
+DICE_ROLL_3 = None
+DICE_ROLL_4 = None
+DICE_ROLL_5 = None
+DICE_ROLL_6 = None
+DICE_ROLL_7 = None
+DICE_ROLL_8 = None
+DICE_ROLL_9 = None
+DICE_ROLL_10 = None
+DICE_ROLL_11 = None
+DICE_ROLL_12 = None
+DICE_ROLL_13 = None
+DICE_ROLL_14 = None
+DICE_ROLL_FINAL_3 = None
+DICE_ROLL_FINAL_7 = None
+DICE_ROLL_FINAL_8 = None
 
 GD = None
 CLK = None
-FPS = 4
+FPS = 120
 
 PLAYER = None
 
@@ -36,9 +50,7 @@ SALES_YES = None
 
 BOARD = None
 
-P_DOC = None
-P_DEV = None
-P_SALES = None
+GAME_PIECE = None
 
 METER_GOAL_100 = None
 
@@ -60,6 +72,11 @@ METER_HEALTH_050 = None
 METER_HEALTH_075 = None
 METER_HEALTH_100 = None
 
+CHEAT_METER_0 = None
+CHEAT_METER_1 = None
+CHEAT_METER_2 = None
+CHEAT_METER_3 = None
+
 MARKET_EVENT_SEQUENCE_0 = None
 MARKET_EVENT_SEQUENCE_1 = None
 MARKET_EVENT_SEQUENCE_2 = None
@@ -80,6 +97,15 @@ FAMILY_EVENT_SEQUENCE_2 = None
 PIGGY_BANK = None
 FINANCE = None
 THANK_YOU = None
+
+SOUND_BOARD_MOVE = None
+SOUND_DICE_ROLL = None
+SOUND_SHOW_ROLL_RESULT = None
+SOUND_EVENT_DISAPPEAR = None
+SOUND_HAPPY_EVENT_APPEAR = None
+SOUND_SAD_EVENT_APPEAR = None
+SOUND_MENU_SELECTION = None
+
 
 cell_types = {
     'market': (3, 8, 15, 24, ),
@@ -128,13 +154,6 @@ token_positioning = {
 
 def load_imgs():
     global BOARD, \
-        P_DOC, \
-        P_DEV, \
-        P_SALES, \
-        WHEEL_ANIMATION_1, \
-        WHEEL_ANIMATION_2, \
-        WHEEL_ANIMATION_3, \
-        WHEEL_10, \
         METER_HAPPINESS_000, \
         METER_HAPPINESS_025, \
         METER_HAPPINESS_050, \
@@ -167,23 +186,59 @@ def load_imgs():
         CAREER_EVENT_SEQUENCE_4, \
         FAMILY_EVENT_SEQUENCE_0, \
         FAMILY_EVENT_SEQUENCE_1, \
-        FAMILY_EVENT_SEQUENCE_2
-
+        FAMILY_EVENT_SEQUENCE_2, \
+        CHEAT_METER_0, \
+        CHEAT_METER_1, \
+        CHEAT_METER_2, \
+        CHEAT_METER_3, \
+        DICE_ROLL_0, \
+        DICE_ROLL_1, \
+        DICE_ROLL_2, \
+        DICE_ROLL_3, \
+        DICE_ROLL_4, \
+        DICE_ROLL_5, \
+        DICE_ROLL_6, \
+        DICE_ROLL_7, \
+        DICE_ROLL_8, \
+        DICE_ROLL_9, \
+        DICE_ROLL_10, \
+        DICE_ROLL_11, \
+        DICE_ROLL_12, \
+        DICE_ROLL_13, \
+        DICE_ROLL_14, \
+        DICE_ROLL_FINAL_3, \
+        DICE_ROLL_FINAL_7, \
+        DICE_ROLL_FINAL_8, \
+        GAME_PIECE,\
+        SOUND_BOARD_MOVE,\
+        SOUND_DICE_ROLL, \
+        SOUND_SHOW_ROLL_RESULT, \
+        SOUND_EVENT_DISAPPEAR,\
+        SOUND_HAPPY_EVENT_APPEAR,\
+        SOUND_SAD_EVENT_APPEAR,\
+        SOUND_MENU_SELECTION
 
     BOARD = pygame.image.load('assets/BOARD.png')
+    GAME_PIECE = pygame.image.load('assets/player-game-piece.png')
 
-    P_DOC = pygame.image.load('assets/p_doc.png')
-    P_DEV = pygame.image.load('assets/p_dev.png')
-    P_SALES = pygame.image.load('assets/p_sales.png')
-
-    WHEEL_ANIMATION_1 = pygame.image.load('assets/wheel_spin_1.png')
-    WHEEL_ANIMATION_2 = pygame.image.load('assets/wheel_spin_2.png')
-    WHEEL_ANIMATION_3 = pygame.image.load('assets/wheel_spin_3.png')
-    WHEEL_10 = pygame.image.load('assets/wheel_10.png')
-
-#   #PIGGY_BANK = pygame.image.load('assets/piggy_bank.png')
-    #FINANCE = pygame.image.load('assets/finance.png')
-    #THANK_YOU = pygame.image.load('assets/thank_you.png')
+    DICE_ROLL_0 = pygame.image.load('assets/dice-roll-1.png')
+    DICE_ROLL_1 = pygame.image.load('assets/dice-roll-2.png')
+    DICE_ROLL_2 = pygame.image.load('assets/dice-roll-3.png')
+    DICE_ROLL_3 = pygame.image.load('assets/dice-roll-4.png')
+    DICE_ROLL_4 = pygame.image.load('assets/dice-roll-5.png')
+    DICE_ROLL_5 = pygame.image.load('assets/dice-roll-6.png')
+    DICE_ROLL_6 = pygame.image.load('assets/dice-roll-7.png')
+    DICE_ROLL_7 = pygame.image.load('assets/dice-roll-8.png')
+    DICE_ROLL_8 = pygame.image.load('assets/dice-roll-9.png')
+    DICE_ROLL_9 = pygame.image.load('assets/dice-roll-10.png')
+    DICE_ROLL_10 = pygame.image.load('assets/dice-roll-11.png')
+    DICE_ROLL_11 = pygame.image.load('assets/dice-roll-12.png')
+    DICE_ROLL_12 = pygame.image.load('assets/dice-roll-13.png')
+    DICE_ROLL_13 = pygame.image.load('assets/dice-roll-14.png')
+    DICE_ROLL_14 = pygame.image.load('assets/dice-roll-15.png')
+    DICE_ROLL_FINAL_3 = pygame.image.load('assets/dice-roll-final-3.png')
+    DICE_ROLL_FINAL_7 = pygame.image.load('assets/dice-roll-final-7.png')
+    DICE_ROLL_FINAL_8 = pygame.image.load('assets/dice-roll-final-8.png')
 
     METER_HAPPINESS_000 = pygame.image.load('assets/METER_HAPPINESS_000.png')
     METER_HAPPINESS_025 = pygame.image.load('assets/METER_HAPPINESS_025.png')
@@ -216,16 +271,30 @@ def load_imgs():
     CAREER_EVENT_SEQUENCE_3_BUTTON_2 = pygame.image.load('assets/scene-career-speech4b-720x720.png')
     CAREER_EVENT_SEQUENCE_3_BUTTON_3 = pygame.image.load('assets/scene-career-speech4c-720x720.png')
     CAREER_EVENT_SEQUENCE_3_BUTTON_4 = pygame.image.load('assets/scene-career-speech4d-720x720.png')
-    CAREER_EVENT_SEQUENCE_4 = pygame.image.load('assets/scene-career-720x720.png')
+    CAREER_EVENT_SEQUENCE_4 = pygame.image.load('assets/scene-career-speech5-720x720.png')
 
     FAMILY_EVENT_SEQUENCE_0 = pygame.image.load('assets/scene-family-720x720.png')
     FAMILY_EVENT_SEQUENCE_1 = pygame.image.load('assets/scene-family-speech1-720x720.png')
     FAMILY_EVENT_SEQUENCE_2 = pygame.image.load('assets/scene-family-speech1-720x720.png')
 
+    CHEAT_METER_0 = pygame.image.load('assets/meter_1.png')
+    CHEAT_METER_1 = pygame.image.load('assets/meter_2.png')
+    CHEAT_METER_2 = pygame.image.load('assets/meter_3.png')
+    CHEAT_METER_3 = pygame.image.load('assets/meter_4.png')
+
+    SOUND_BOARD_MOVE = pygame.mixer.Sound('sounds/small_world_board_move.wav')
+    SOUND_DICE_ROLL = pygame.mixer.Sound('sounds/small_world_dice_roll.wav')
+    SOUND_SHOW_ROLL_RESULT = pygame.mixer.Sound('sounds/small_world_show_roll_result.wav')
+    SOUND_EVENT_DISAPPEAR = pygame.mixer.Sound('sounds/small_world_event_disappear.wav')
+    SOUND_HAPPY_EVENT_APPEAR = pygame.mixer.Sound('sounds/small_world_happy_event_appear.wav')
+    SOUND_SAD_EVENT_APPEAR = pygame.mixer.Sound('sounds/small_world_sad_event_appear.wav')
+    SOUND_MENU_SELECTION = pygame.mixer.Sound('sounds/small_world_menu_selection.wav')
+
 
 def init_pygame():
     global GD, CLK, PLAYER, DISPLAY_W, DISPLAY_H
     pygame.init()
+    pygame.mixer.pre_init(44100, 16, 2, 4096)
     GD = pygame.display.set_mode((DISPLAY_W, DISPLAY_H))
     pygame.display.set_caption("It's a small world!")
     CLK = pygame.time.Clock()
@@ -236,3 +305,4 @@ def init_pygame():
 def init():
     init_pygame()
     load_imgs()
+

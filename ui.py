@@ -90,19 +90,28 @@ class PlayerUI(object):
                      constants.METER_GOAL_100,
                      constants.METER_GOAL_100,
                      )
+        self.cheat = (constants.CHEAT_METER_0,
+                      constants.CHEAT_METER_1,
+                      constants.CHEAT_METER_2,
+                      constants.CHEAT_METER_3,
+                      )
+        self.cheat_meter = 0
         self.active_state = {}
 
     def update(self, kwargs):
-        self.active_state['cash'] = kwargs['cash']
-        self.active_state['heart'] = kwargs['heart']
-        self.active_state['face'] = kwargs['face']
-        self.active_state['goal'] = kwargs['goal']
+        self.cheat_meter = kwargs
+
+        # self.active_state['cash'] = kwargs['cash']
+        # self.active_state['heart'] = kwargs['heart']
+        # self.active_state['face'] = kwargs['face']
+        # self.active_state['goal'] = kwargs['goal']
 
     def render(self):
-        constants.GD.blit(self.cash[self.active_state['cash']], self.cash[self.active_state['cash']].get_rect())
-        constants.GD.blit(self.heart[self.active_state['heart']], self.heart[self.active_state['heart']].get_rect())
-        constants.GD.blit(self.face[self.active_state['face']], self.face[self.active_state['face']].get_rect())
-        constants.GD.blit(self.goal[self.active_state['goal']], self.goal[self.active_state['goal']].get_rect())
+        constants.GD.blit(self.cheat[self.cheat_meter], self.cheat[self.cheat_meter].get_rect())
+        # constants.GD.blit(self.cash[self.active_state['cash']], self.cash[self.active_state['cash']].get_rect())
+        # constants.GD.blit(self.heart[self.active_state['heart']], self.heart[self.active_state['heart']].get_rect())
+        # constants.GD.blit(self.face[self.active_state['face']], self.face[self.active_state['face']].get_rect())
+        # constants.GD.blit(self.goal[self.active_state['goal']], self.goal[self.active_state['goal']].get_rect())
 
 
 class EventUI(object):
@@ -119,5 +128,5 @@ class EventUI(object):
             self.active_event = events.FamilyEvent()
 
     def play(self, player_ui, player_state):
-        self.active_event.play(player_ui, player_state)
+        return self.active_event.play(player_ui, player_state)
 

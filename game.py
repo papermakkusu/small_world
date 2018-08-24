@@ -16,14 +16,14 @@ import constants
 
 def game_loop():
 
-    dice_rolls = (3, 7, 8)
+    dice_rolls = (3, 7, 8, 0)
 
     event_counter = 0
     player = Player()
     dice = Dice()
     player_ui = ui.PlayerUI()
     event_ui = ui.EventUI()
-    player_ui.update(player.state)
+    player_ui.update(0)  # (player.state)
 
     utils.draw_board()
     player.render()
@@ -47,7 +47,6 @@ def game_loop():
 
                 if event.key == pygame.K_RETURN:
                     dice.throw(dice_rolls[event_counter])
-                    dice.show()
                     event_counter += 1
 
                     # Move the player token across the board
@@ -62,15 +61,23 @@ def game_loop():
                         pygame.display.update()
 
                     event_ui.spawn_event(player.position)
-                    event_ui.play(player_ui, player.state)
+                    player.state = event_ui.play(player_ui, player.state)
                     utils.draw_board()
                     player.render()
                     player_ui.render()
 
-        #event_ui.update_active(player.position)
-        #event_ui.play()
+        # event_ui.update_active(player.position)
+        # event_ui.play()
         pygame.display.update()
         constants.CLK.tick(constants.FPS)
+
+        # loop that waits for player to press Escape to exit the game
+        if event_counter == 3:
+            while True:
+                for quit_event in pygame.event.get():
+                    if quit_event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        quit()
 
 
 def main():

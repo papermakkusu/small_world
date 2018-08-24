@@ -28,12 +28,11 @@ def draw_player_menu(*args):
     draw_sprite(args[0])
 
 
-def play_animation(interval: float, repeat: int, resources: list):
-    for _ in range(repeat):
-        for __ in resources:
-            constants.GD.blit(__, __.get_rect())
-            pygame.display.update()
-            sleep(interval)
+def play_animation(interval: float, resources: tuple):
+    for _ in resources:
+        constants.GD.blit(_, _.get_rect())
+        pygame.display.update()
+        sleep(interval)
 
 
 def draw_sprite(sprite):

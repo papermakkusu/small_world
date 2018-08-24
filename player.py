@@ -11,7 +11,7 @@ import events
 class Player(object):
 
     def __init__(self):
-        self.player_img = constants.P_SALES
+        self.player_img = constants.GAME_PIECE
         self.position = constants.ZERO
         self.coord = (constants.ZERO, constants.ZERO)
         self.state = {'cash': constants.TWO,
@@ -32,6 +32,7 @@ class Player(object):
         else:
             self.position += count
         self.reposition()
+        constants.SOUND_BOARD_MOVE.play()
         self.render()
 
     def change_state(self, cash=None, heart=None, face=None, goal=None):
